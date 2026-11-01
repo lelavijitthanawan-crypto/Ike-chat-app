@@ -1,5 +1,3 @@
-const GROQ_API_KEY = "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";
-
 let chatHistory = JSON.parse(localStorage.getItem('ike_history')) || [];
 let customAvatar = localStorage.getItem('ike_avatar') || 'https://i.ibb.co/0VyJkn38/Ike-Eveland.jpg';
 
@@ -90,10 +88,9 @@ async function send() {
     showLoader(loadId);
 
     try {
-        const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        const res = await fetch("/api/chat", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${GROQ_API_KEY}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
